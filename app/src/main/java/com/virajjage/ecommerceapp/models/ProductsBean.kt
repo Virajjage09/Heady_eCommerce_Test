@@ -8,6 +8,6 @@ data class ProductsBean(
     var order_count : Long? = null,
     var view_count : Long? = null,
     var shares : Long? = null,
-    var variants : ArrayList<VariantsBean> =  ArrayList()
+    var variants : List<VariantsBean> =  ArrayList()
 
 )
