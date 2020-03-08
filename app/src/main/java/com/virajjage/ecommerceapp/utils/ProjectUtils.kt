@@ -22,4 +22,14 @@ object ProjectUtils {
             else -> ContextCompat.getDrawable(context,R.drawable.ic_image_not_available)
         }
     }
+
+    fun getProductColor(context:Context,colorName : String) : Int{
+        return when(colorName.trim()){
+            "White" -> ContextCompat.getColor(context,R.color.colorWhite)
+            "Red" -> ContextCompat.getColor(context,R.color.colorRed)
+            "Black" -> ContextCompat.getColor(context,R.color.colorBlack)
+            "Blue" -> ContextCompat.getColor(context,R.color.colorBlue)
+            else -> ContextCompat.getColor(context,R.color.colorPrimary)
+        }
+    }
 }

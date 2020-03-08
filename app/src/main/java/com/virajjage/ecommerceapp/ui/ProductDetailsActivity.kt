@@ -8,15 +8,22 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.virajjage.abl_test_viraj_jage.viewmodels.DashBoardActivityViewModel
 import com.virajjage.ecommerceapp.R
+import com.virajjage.ecommerceapp.adapters.ColorListAdapter
+import com.virajjage.ecommerceapp.adapters.SizeListAdapter
+import com.virajjage.ecommerceapp.interfaces.onColorPickListener
 import com.virajjage.ecommerceapp.models.ProductsBean
 import com.virajjage.ecommerceapp.utils.ProjectUtils
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.activity_product_details.*
 
-class ProductDetailsActivity : AppCompatActivity() {
+class ProductDetailsActivity : AppCompatActivity(),onColorPickListener {
 
     private lateinit var categoryName: String
     private var productsBean: ProductsBean? = null
+    private var variantMap :  MutableMap<String,MutableList<Int>> = HashMap()
+    private var colorSet:MutableSet<String> = HashSet()
+    private lateinit var colorListAdapter : ColorListAdapter
+    private lateinit var sizeListAdapter: SizeListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,8 +75,6 @@ class ProductDetailsActivity : AppCompatActivity() {
     }
 
     private fun parseVariantsData(){
-        var colorSet:MutableSet<String> = HashSet()
-        var variantMap :  MutableMap<String,MutableList<Int>> = HashMap()
         for (variants in productsBean?.variants!!){
             colorSet.add(variants.color.toString())
         }
@@ -86,7 +91,15 @@ class ProductDetailsActivity : AppCompatActivity() {
 
         Log.d("Variant Map","Variant Map$variantMap")
 
+        colorListAdapter = ColorListAdapter(colorSet,this)
+        recColorList.adapter = colorListAdapter
 
+    }
+
+    override fun onColorSelected(colorName: String) {
+        tvColorName.text = colorName
+        sizeListAdapter = SizeListAdapter(variantMap[colorName],this)
+        recSizeList.adapter = sizeListAdapter
     }
 
 }
