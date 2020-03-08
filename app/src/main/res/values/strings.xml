@@ -2,4 +2,6 @@
     <string name="app_name">Heady eCommerce Test</string>
     <string name="rupee_sign">\u20B9</string>
     <string name="txt_product_not_available">Products cominng soon..</string>
+    <string name="txt_color_option">Color Options : \t</string>
+    <string name="txt_size">Size</string>
 </resources>

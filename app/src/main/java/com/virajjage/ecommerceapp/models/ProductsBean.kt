@@ -1,5 +1,9 @@
 package com.virajjage.ecommerceapp.models
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class ProductsBean(
     var id : Int? = null,
     var name : String? = null,
@@ -10,4 +14,4 @@ data class ProductsBean(
     var shares : Long? = null,
     var variants : List<VariantsBean> =  ArrayList()
 
-)
+) : Parcelable

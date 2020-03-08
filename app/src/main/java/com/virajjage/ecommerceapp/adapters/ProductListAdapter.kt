@@ -5,14 +5,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.virajjage.ecommerceapp.R
+import com.virajjage.ecommerceapp.interfaces.onClickListener
 import com.virajjage.ecommerceapp.models.ProductsBean
 import com.virajjage.ecommerceapp.utils.ProjectUtils
 
 
 class ProductListAdapter(private val productList: List<ProductsBean>,
-                         private val productName : String) :
+                         private val categoryName : String,
+                         private val onClickListener: onClickListener
+) :
     RecyclerView.Adapter<ProductListAdapter.ProductListHolder>() {
 
 
@@ -35,7 +39,11 @@ class ProductListAdapter(private val productList: List<ProductsBean>,
                 holder.tvProductPrice.text =
                     resource.getString(R.string.rupee_sign) + " " + productsBean.variants[0].price
             }
-            holder.imgChildView.setImageDrawable(ProjectUtils.getProductImage(holder.itemView.context,productName))
+            holder.imgChildView.setImageDrawable(ProjectUtils.getProductImage(holder.itemView.context,categoryName))
+
+            holder.cardProduct.setOnClickListener {
+                onClickListener.onClick(productsBean,categoryName)
+            }
 
         } catch (e: Exception) {
             e.printStackTrace()
@@ -47,7 +55,7 @@ class ProductListAdapter(private val productList: List<ProductsBean>,
         var tvProductName: TextView = itemView.findViewById(R.id.tvProductName)
         var tvProductPrice: TextView = itemView.findViewById(R.id.tvProductPrice)
         var imgChildView : ImageView = itemView.findViewById(R.id.imgChildView)
-
+        var cardProduct : CardView = itemView.findViewById(R.id.cardProduct)
     }
 
 }
