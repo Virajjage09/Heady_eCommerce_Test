@@ -3,20 +3,15 @@ package com.virajjage.ecommerceapp.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.virajjage.ecommerceapp.R
-import com.virajjage.ecommerceapp.interfaces.onClickListener
-import com.virajjage.ecommerceapp.interfaces.onColorPickListener
-import com.virajjage.ecommerceapp.models.ProductsBean
+import com.virajjage.ecommerceapp.interfaces.OnColorPickListener
 import com.virajjage.ecommerceapp.utils.ProjectUtils
 
 
 class ColorListAdapter(private val colorSet: MutableSet<String>,
-                       private val onColorPickListener: onColorPickListener
+                       private val OnColorPickListener: OnColorPickListener
 ) :
     RecyclerView.Adapter<ColorListAdapter.ColorListHolder>() {
 
@@ -35,11 +30,8 @@ class ColorListAdapter(private val colorSet: MutableSet<String>,
         try {
             var color = colorSet.elementAt(position)
             holder.tvColor.setBackgroundColor(ProjectUtils.getProductColor(holder.itemView.context,color))
-            if(position == 0){
-                holder.tvColor.performClick()
-            }
             holder.tvColor.setOnClickListener {
-                onColorPickListener.onColorSelected(color)
+                OnColorPickListener.onColorSelected(color)
             }
 
         } catch (e: Exception) {

@@ -29,6 +29,7 @@ object ProjectUtils {
             "Red" -> ContextCompat.getColor(context,R.color.colorRed)
             "Black" -> ContextCompat.getColor(context,R.color.colorBlack)
             "Blue" -> ContextCompat.getColor(context,R.color.colorBlue)
+            "Brown" -> ContextCompat.getColor(context,R.color.colorBrown)
             else -> ContextCompat.getColor(context,R.color.colorPrimary)
         }
     }

@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.virajjage.ecommerceapp.R
-import com.virajjage.ecommerceapp.interfaces.onColorPickListener
+import com.virajjage.ecommerceapp.interfaces.OnColorPickListener
 
 
 class SizeListAdapter(private val sizeArrayList:MutableList<Int>?,
-                      private val onColorPickListener: onColorPickListener
+                      private val OnColorPickListener: OnColorPickListener
 ) :
     RecyclerView.Adapter<SizeListAdapter.SizeListHolder>() {
 
@@ -30,6 +30,7 @@ class SizeListAdapter(private val sizeArrayList:MutableList<Int>?,
             var size = sizeArrayList?.get(position)
             holder.tvSize.text = size.toString()
             holder.tvSize.setOnClickListener {
+                size?.let { it1 -> OnColorPickListener.onSizeSelected(it1) }
             }
 
         } catch (e: Exception) {

@@ -8,14 +8,14 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.virajjage.ecommerceapp.R
-import com.virajjage.ecommerceapp.interfaces.onClickListener
+import com.virajjage.ecommerceapp.interfaces.OnClickListener
 import com.virajjage.ecommerceapp.models.ProductsBean
 import com.virajjage.ecommerceapp.utils.ProjectUtils
 
 
 class ProductListAdapter(private val productList: List<ProductsBean>,
                          private val categoryName : String,
-                         private val onClickListener: onClickListener
+                         private val OnClickListener: OnClickListener
 ) :
     RecyclerView.Adapter<ProductListAdapter.ProductListHolder>() {
 
@@ -42,7 +42,7 @@ class ProductListAdapter(private val productList: List<ProductsBean>,
             holder.imgChildView.setImageDrawable(ProjectUtils.getProductImage(holder.itemView.context,categoryName))
 
             holder.cardProduct.setOnClickListener {
-                onClickListener.onClick(productsBean,categoryName)
+                OnClickListener.onClick(productsBean,categoryName)
             }
 
         } catch (e: Exception) {

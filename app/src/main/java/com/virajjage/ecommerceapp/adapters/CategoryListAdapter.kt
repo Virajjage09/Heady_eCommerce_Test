@@ -1,20 +1,17 @@
 package com.virajjage.ecommerceapp.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.virajjage.ecommerceapp.R
-import com.virajjage.ecommerceapp.interfaces.onClickListener
+import com.virajjage.ecommerceapp.interfaces.OnClickListener
 import com.virajjage.ecommerceapp.models.CategoriesBean
 
 class CategoryListAdapter(private val categoryList: List<CategoriesBean>,
-                          private val onClickListener: onClickListener) :
+                          private val OnClickListener: OnClickListener) :
     RecyclerView.Adapter<CategoryListAdapter.CategoryListHolder>() {
 
     private val viewPool = RecyclerView.RecycledViewPool()
@@ -47,7 +44,7 @@ class CategoryListAdapter(private val categoryList: List<CategoriesBean>,
                 holder.recCategoryList.apply {
                     layoutManager = childLayoutManager
                     adapter =
-                        ProductListAdapter(categoriesBean.products, categoriesBean.name.toString(),onClickListener)
+                        ProductListAdapter(categoriesBean.products, categoriesBean.name.toString(),OnClickListener)
                     setRecycledViewPool(viewPool)
                 }
             }else{

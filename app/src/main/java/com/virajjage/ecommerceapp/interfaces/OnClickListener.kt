@@ -2,6 +2,6 @@ package com.virajjage.ecommerceapp.interfaces
 
 import com.virajjage.ecommerceapp.models.ProductsBean
 
-interface onClickListener {
+interface OnClickListener {
      fun onClick(productsBean: ProductsBean,categoryName : String)
 }

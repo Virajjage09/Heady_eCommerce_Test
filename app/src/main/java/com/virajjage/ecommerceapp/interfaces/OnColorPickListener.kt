@@ -1,5 +1,6 @@
 package com.virajjage.ecommerceapp.interfaces
 
-interface onColorPickListener {
+interface OnColorPickListener {
     fun onColorSelected(colorName : String)
+    fun onSizeSelected(size : Int)
 }
